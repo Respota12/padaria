@@ -1,9 +1,6 @@
 from django.contrib import admin
 from django.urls import path, include
 from pathlib import Path
-
-
-# Importação da view da aplicação 'todos'
 from todos.views import todo_list
 
 # Definição das URLs do projeto
