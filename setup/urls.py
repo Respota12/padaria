@@ -1,14 +1,22 @@
 from django.contrib import admin
-from django.urls import path, include
-from pathlib import Path
+from django.urls import path
 
 
-# Importação da view da aplicação 'todos'
-from todos.views import todo_list
+from todos.views import (
+    TodoListView, 
+    TodoCreateView, 
+    TodoUpdateView, 
+    TodoDeleteView, 
+    TodoCompleteView,
+)
 
 # Definição das URLs do projeto
 urlpatterns = [
     path("admin/", admin.site.urls),  # URL para acessar o admin do Django
-    path("", todo_list, name="todo_list"),  # URL raiz para a lista de todos, com nome nomeado
-    path("cadastrar", include('user.urls'))
+    path("", TodoListView.as_view(), name="todo_list"),
+    path("create", TodoCreateView.as_view(), name="todo_create"),
+    path("update/<int:pk>", TodoUpdateView.as_view(), name="todo_update"),
+    path("delete/<int:pk>", TodoDeleteView.as_view(), name="todo_delete"),
+    path("complete/<int:pk>", TodoCompleteView.as_view(), name="todo_complete")
+    
 ]
