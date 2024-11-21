@@ -3,21 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cadastrar Usuário</title>
+    <title>Login</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
     <style>
         body {
             font-family: Arial, sans-serif;
             background-color: #f4f4f9;
-            margin: 0;
-            padding: 0;
             display: flex;
             justify-content: center;
             align-items: center;
             height: 100vh;
+            margin: 0;
         }
         .container {
             background: #fff;
-            padding: 20px 30px;
+            padding: 30px 40px;
             border-radius: 8px;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
             width: 400px;
@@ -58,16 +59,33 @@
             color: red;
             margin-bottom: 15px;
         }
+        .signup-link {
+            text-align: center;
+            margin-top: 10px;
+        }
+        .signup-link a {
+            color: #007bff;
+            text-decoration: none;
+        }
+        .signup-link a:hover {
+            text-decoration: underline;
+        }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>Cadastro de Usuário</h1>
+        <h1>Login</h1>
         <form method="POST">
             {% csrf_token %}
-            {{ form.as_p }}
-            <button type="submit">Cadastrar</button>
+            <label for="username">Usuário:</label>
+            <input type="text" id="username" name="username" placeholder="Digite seu nome de usuário" required>
+            
+            <label for="password">Senha:</label>
+            <input type="password" id="password" name="password" placeholder="Digite sua senha" required>
+            
+            <button type="submit">Entrar</button>
         </form>
+        
         {% if messages %}
         <div class="messages">
             <ul>
@@ -77,6 +95,10 @@
             </ul>
         </div>
         {% endif %}
+        
+        <div class="signup-link">
+            <p>Não tem uma conta? <a href="{% url 'cadastrar' %}">Cadastre-se</a></p>
+        </div>
     </div>
 </body>
 </html>
