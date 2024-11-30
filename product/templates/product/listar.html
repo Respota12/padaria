@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Produtos Disponíveis</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f8f8;
+        }
+        header {
+            background-color: #f6a823;
+            padding: 20px;
+            text-align: center;
+            color: white;
+        }
+        header h1 {
+            margin: 0;
+        }
+        .container {
+            padding: 20px;
+            text-align: center;
+        }
+        .product {
+            display: inline-block;
+            width: 30%;
+            margin: 15px;
+            text-align: center;
+        }
+        .product img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+        }
+        .product h3 {
+            margin-top: 10px;
+            color: #333;
+        }
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 15px 0;
+            margin-top: 30px;
+        }
+        footer a {
+            color: #f6a823;
+            text-decoration: none;
+        }
+        footer a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Padaria do Sérginho</h1>
+        <p>Produtos disponíveis</p>
+    </header>
+    <div class="container">
+        <h2>Produtos Disponíveis</h2>
+        <div id="produtos">
+            {% for produto in produtos %}
+                <div class="product">
+                    <img src="{{ produto.imagem.url }}" alt="{{ produto.nome }}">
+                    <h3>{{ produto.nome }}</h3>
+                    <p>R$ {{ produto.preco }}</p>
+                </div>
+            {% endfor %}
+        </div>
+        <a href="{% url 'cadastrar_produto' %}">
+            <button>Cadastrar Produto</button>
+        </a>
+    </div>
+    <footer>
+        <p>&copy; 2024 Padaria Simples. Todos os direitos reservados.</p>
+    </footer>
+</body>
+</html>
