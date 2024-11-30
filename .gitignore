@@ -1,0 +1,10 @@
+setup/__pycache__/
+todos/__pycache__/
+user/__pycache__/
+todos/migratios/__pycache__/
+user/migrations/__pycache__/
+todos/migrations/__pycache__/
+product/__pycache__/
+product/migrations/__pycache__/
+.vscode/
+db.sqlite3

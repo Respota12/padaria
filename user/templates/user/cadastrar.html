@@ -21,11 +21,11 @@
             border-radius: 8px;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
             width: 400px;
+            text-align: center;
         }
         h1 {
             margin-bottom: 20px;
             color: #333;
-            text-align: center;
         }
         form {
             display: flex;
@@ -38,11 +38,18 @@
         }
         input {
             padding: 10px;
-            margin-bottom: 15px;
+            margin-bottom: 10px;
             border: 1px solid #ccc;
             border-radius: 4px;
         }
-        button {
+        .error-message {
+            color: red;
+            font-size: 0.9em;
+            margin-top: -10px;
+            margin-bottom: 10px;
+        }
+        button,
+        .login-btn {
             padding: 10px;
             background: #007bff;
             color: white;
@@ -50,13 +57,28 @@
             border-radius: 4px;
             cursor: pointer;
             font-size: 16px;
+            width: 100%;
+            margin-top: 10px;
+            text-decoration: none;
+            display: block;
+            box-sizing: border-box;
         }
-        button:hover {
+        button:hover,
+        .login-btn:hover {
             background: #0056b3;
         }
-        .messages {
-            color: red;
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
             margin-bottom: 15px;
+        }
+        .form-group label {
+            margin-bottom: 5px;
+            width: 100%;
+        }
+        .form-group input {
+            width: 100%;
         }
     </style>
 </head>
@@ -65,18 +87,29 @@
         <h1>Cadastro de Usuário</h1>
         <form method="POST">
             {% csrf_token %}
-            {{ form.as_p }}
+            {% for field in form %}
+                <div class="form-group">
+                    {{ field.label_tag }}
+                    {{ field }}
+                    {% if field.errors %}
+                        <div class="error-message">
+                            {{ field.errors|join:", " }}
+                        </div>
+                    {% endif %}
+                </div>
+            {% endfor %}
             <button type="submit">Cadastrar</button>
         </form>
         {% if messages %}
-        <div class="messages">
-            <ul>
-                {% for message in messages %}
-                    <li>{{ message }}</li>
-                {% endfor %}
-            </ul>
-        </div>
+            <div class="messages">
+                <ul>
+                    {% for message in messages %}
+                        <li>{{ message }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
         {% endif %}
+        <a href="{% url 'login' %}" class="login-btn">Já tem uma conta? Faça login</a>
     </div>
 </body>
 </html>

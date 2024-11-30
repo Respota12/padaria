@@ -1,7 +1,7 @@
 from datetime import date
 from django.views.generic import ListView, CreateView, UpdateView, DeleteView, View
 from django.urls import reverse_lazy
-from django.shortcuts import get_object_or_404, redirect
+from django.shortcuts import get_object_or_404, redirect, render
 from .models import Todo
 
 class TodoListView(ListView):
@@ -27,4 +27,3 @@ class TodoCompleteView(View):
         todo.finished_at = date.today()
         todo.save()
         return redirect("todo_list")
-
