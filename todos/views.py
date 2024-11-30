@@ -4,7 +4,6 @@ from django.urls import reverse_lazy
 from django.shortcuts import get_object_or_404, redirect
 from .models import Todo
 
-# Create your views here.
 def todo_list(request):
     todos = Todo.objects.all()
     return render(request, "todos/todo_list.html", {"todos": todos})
