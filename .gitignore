@@ -6,3 +6,4 @@ user/migrations/__pycache__/
 todos/migrations/__pycache__/
 product/__pycache__/
 product/migrations/__pycache__/
+.vscode/settings.json
