@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Padaria Simples</title>
+    <title>Padaria do Sérginho</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -73,51 +73,18 @@
 </head>
 <body>
     <header>
-        <h1>Padaria Simples</h1>
+        <h1>Padaria do Sérginho</h1>
         <p>Deliciosos pães e doces fresquinhos todos os dias!</p>
     </header>
     <nav>
-        <a href="#produtos">Produtos</a>
-        <a href="#contato">Contato</a>
-        <a href="#sobre">Sobre</a>
-    </nav>
-    <div class="container">
-        <h2>Produtos Disponíveis</h2>
-        <div id="produtos">
-            <div class="product">
-                <img src="https://via.placeholder.com/250x250?text=Pão+Francês" alt="Pão Francês">
-                <h3>Pão Francês</h3>
-                <p>R$ 0,80/unidade</p>
-            </div>
-            <div class="product">
-                <img src="https://via.placeholder.com/250x250?text=Bolo+De+Chocolate" alt="Bolo de Chocolate">
-                <h3>Bolo de Chocolate</h3>
-                <p>R$ 15,00/fatia</p>
-            </div>
-            <div class="product">
-                <img src="https://via.placeholder.com/250x250?text=Pão+De+Queijo" alt="Pão de Queijo">
-                <h3>Pão de Queijo</h3>
-                <p>R$ 2,50/unidade</p>
-            </div>
-        </div>
-        <div id="sobre">
-            <h2>Sobre a Padaria</h2>
-            <p>Fundada em 2024, a Padaria do Sérginho busca trazer a melhor qualidade em pães, bolos e outros produtos de panificação. Trabalhamos com ingredientes frescos e de qualidade, garantindo sabor e frescor para nossos clientes.</p>
-        </div>
-        <div id="contato">
-            <h2>Contato</h2>
-            <form action="" method="POST">
-                <input type="text" placeholder="Seu Nome" required><br><br>
-                <input type="email" placeholder="Seu Email" required><br><br>
-                <textarea placeholder="Sua Mensagem" rows="4" required></textarea><br><br>
-                <button type="submit">Enviar</button>
-            </form>
-        </div>
-    </div>
+        <a href="{% url 'listar_produtos' %}">Produtos</a> 
+        <a href="{% url 'todo_list' %}" >Ver Lista de Tarefas</a>
+        <a href="{% url 'logout' %}" >Sair</a>
+    </nav>    
     <footer>
         <p>&copy; 2024 Padaria do Sérginho. Todos os direitos reservados.</p>
         <p>Visite-nos: Rua Exemplo, 123 - Maceió, Alagoas</p>
-        <p><a href="mailto:contato@padariasimples.com">contato@padariasimples.com</a></p>
+        <p><a href="mailto:contato@padariaserginho.com">contato@padariaserginho.com</a></p>
     </footer>
 </body>
 </html>

@@ -1,4 +1,4 @@
-from django.contrib.auth import authenticate, login as auth_login
+from django.contrib.auth import authenticate, logout, login as auth_login
 from django.shortcuts import render, redirect
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib import messages
@@ -34,3 +34,8 @@ def logar(request):
 @login_required
 def inicial(request):
     return render(request, 'user/inicial.html')
+
+def logout_view(request):
+    logout(request)
+    messages.success(request, "Logout realizado com sucesso!")
+    return redirect('login')
