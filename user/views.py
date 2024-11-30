@@ -1,4 +1,4 @@
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login as auth_login
 from django.shortcuts import render, redirect
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib import messages
@@ -18,13 +18,13 @@ def cadastrar(request):
     
     return render(request, 'user/cadastrar.html', {'form': form})
 
-def login(request):
+def logar(request):
     if request.method == 'POST':
         username = request.POST.get('username')
         password = request.POST.get('password')
         user = authenticate(request, username=username, password=password)
         if user is not None:
-            login(request, user)
+            auth_login(request, user)
             messages.success(request, "Login realizado com sucesso!")
             return redirect('inicial')
         else:
