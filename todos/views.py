@@ -1,12 +1,8 @@
 from datetime import date
 from django.views.generic import ListView, CreateView, UpdateView, DeleteView, View
 from django.urls import reverse_lazy
-from django.shortcuts import get_object_or_404, redirect
+from django.shortcuts import get_object_or_404, redirect, render
 from .models import Todo
-
-def todo_list(request):
-    todos = Todo.objects.all()
-    return render(request, "todos/todo_list.html", {"todos": todos})
 
 class TodoListView(ListView):
     model = Todo
